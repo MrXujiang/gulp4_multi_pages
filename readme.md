@@ -9,7 +9,7 @@ yarn serve 在本地运行打包后的项目
 2.需要2次md5才能得到想要的结果
 
 ### 更多交流学习
-<img src="./logo.png">
+<img src="./logo.png" width="300">
 
 
 ### 扩展
