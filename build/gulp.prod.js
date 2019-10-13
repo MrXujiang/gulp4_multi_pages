@@ -2,7 +2,7 @@ const gulp = require('gulp');
 // const Rename = require('gulp-rename');          // 重命名
 // js
 const Uglify = require('gulp-uglify');          // 压缩js
-// const Babel = require('gulp-babel');
+const Babel = require('gulp-babel');
 // css
 const Minifycss = require('gulp-minify-css');   // 压缩css
 const Less = require('gulp-less');              // 编译less
@@ -68,9 +68,18 @@ async function css() {
 // js
 async function js() {
     return await gulp.src('src/js/**')
-    // .pipe(Babel({
-    //     presets: ['es2015']
-    // }))
+    .pipe(Babel({
+        presets: [
+            [
+                "@babel/preset-env",
+                {
+                  "targets": {
+                    "browsers": ["last 2 versions", "ie >= 7"]
+                  }
+                }
+              ]
+        ]
+    }))
     .pipe(Uglify()) // 压缩js
     .pipe(gulp.dest(dist + '/js'))
     .pipe(md5(10, dist + '/*.html', {
